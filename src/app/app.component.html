@@ -1,0 +1,219 @@
+
+
+<div style="padding: 2rem;" class="">
+  <div style="display: flex; gap: 2rem;" [formGroup]="configForm" class="">
+    <mat-form-field appearance="outline">
+      <mat-label>Pair Type</mat-label>
+      <mat-select formControlName="parentType">
+        <mat-option value="option1">Man/Woman</mat-option>
+        <mat-option value="option2">Animal/Animal</mat-option>
+        <mat-option value="option3">Mech/Mech</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Period</mat-label>
+      <mat-select formControlName="period">
+        <mat-option [disabled]="configForm.value.parentType !== 'option1'" value="10">10 days</mat-option>
+        <mat-option [disabled]="configForm.value.parentType !== 'option1'" value="30">30 days</mat-option>
+        <mat-option value="60">60 days</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Additional Gold</mat-label>
+      <input type="number" [validation]="false" mask="000000" minMax [min]="0" [max]="100000" formControlName="additionalGold" matInput placeholder="0">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Stats count in crystall</mat-label>
+      <input type="number" [validation]="false" mask="0" minMax [min]="1"
+      [max]="6" formControlName="statsNumber" matInput placeholder="0">
+    </mat-form-field>
+    <div class="">Min required gold: {{minGold}}<br>
+      Used gold: {{minGold + +configForm.value.additionalGold}}<br>
+      Returned gold: {{+configForm.value.additionalGold / 2}}</div>
+  </div>
+  
+  
+  
+  <div style="display: flex; justify-content: left;" class="">
+    <div [formGroup]="firstParentForm" style="display: flex; flex-direction: column;" class="">
+      <div style="font-size: 1.5rem; text-align: center; margin-bottom: 10px;" class="">{{configForm.value.parentType == 'option1' ? 'Man' : configForm.value.parentType == 'option2' ? 'Animal' : 'Mech'}}</div>
+      <mat-form-field appearance="outline">
+        <mat-label>House</mat-label>
+        <mat-select formControlName="house">
+          <mat-option value="H'Dronners">H'Dronners</mat-option>
+          <mat-option value="Akreitess">Akreitess</mat-option>
+          <mat-option value="Korrtess">Korrtess</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Rarity</mat-label>
+        <input type="number" [validation]="false" mask="0" minMax [min]="1" [max]="7" formControlName="rarity" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Grade</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="grade" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Power</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="power" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Agility</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="agility" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Stamina</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="stamina" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Intellegence</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="intellegence" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Charisma</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="charisma" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Luck</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="luck" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Black rock number</mat-label>
+        <input type="number" [validation]="false" mask="00" minMax [min]="0" [max]="+configForm.value.period" formControlName="blackRock" matInput placeholder="0">
+      </mat-form-field>
+      </div>
+    <div [formGroup]="secondParentForm" style="display: flex; flex-direction: column; margin-left: 2rem;" class="">
+      <div  style="font-size: 1.5rem; text-align: center; margin-bottom: 10px;"  class="">{{configForm.value.parentType == 'option1' ? 'Woman' : configForm.value.parentType == 'option2' ? 'Animal' : 'Mech'}}</div>
+      <mat-form-field appearance="outline">
+        <mat-label>House</mat-label>
+        <mat-select formControlName="house">
+          <mat-option value="H'Dronners">H'Dronners</mat-option>
+          <mat-option value="Akreitess">Akreitess</mat-option>
+          <mat-option value="Korrtess">Korrtess</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Rarity</mat-label>
+        <input type="number" [validation]="false" mask="0" minMax [min]="1" [max]="7" formControlName="rarity" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Grade</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="grade" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Power</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="power" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Agility</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="agility" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Stamina</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="stamina" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Intellegence</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="intellegence" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Charisma</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="charisma" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Luck</mat-label>
+        <input type="number" [validation]="false" mask="000" minMax [min]="0" [max]="100" formControlName="luck" matInput placeholder="0">
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Black rock number</mat-label>
+        <input type="number" [validation]="false" mask="00" minMax [min]="0" [max]="+configForm.value.period" formControlName="blackRock" matInput placeholder="0">
+      </mat-form-field>
+      </div>
+      <div style="margin-left: 2rem;" class="">
+        <div  style="font-size: 1.5rem; text-align: left; margin-bottom: 10px;" class="">
+         Primary House: {{primaryHouse}}{{secondaryHouse ? ', Secondary House: ' + secondaryHouse : ''}}, Grade: 0, Rarity depends on stats
+        </div>
+
+        <div style="font-size: 1rem; text-align: left; margin-bottom: 10px;" class="">
+          Success Chance: {{successChance}}%, Upgrade Chance: {{UpgrChance1}}-{{UpgrChance2}}%, Upgrade Percent: {{upgrPer1}}-{{upgrPer2}}%, Degrade Chance: {{degrChance1}}-{{degrChance2}}%, Degrade Percent: {{degrPer1}}-{{degrPer2}}%, Chance +1 rarity: {{plusRar1}}%, Chance +2 rarity: {{plusRar2}}%
+        </div>
+        <table>
+          <thead>
+              <tr>
+                <td></td>
+                <td>Value</td>
+                <td>Value with upgrade</td>
+                <td>Value with degrade</td>
+                <td>Value with upgrade and degrade</td>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Power</td>
+              <td>{{str1}}-{{str2}}</td>
+              <td>{{str1gr}}-{{str2gr}}</td>
+              <td>{{str1de}}-{{str2de}}</td>
+              <td>{{str1grde}}-{{str2grde}}</td>
+            </tr>
+            <tr>
+              <td>Agility</td>
+              <td>{{agl1}}-{{agl2}}</td>
+              <td>{{agl1gr}}-{{agl2gr}}</td>
+              <td>{{agl1de}}-{{agl2de}}</td>
+              <td>{{agl1grde}}-{{agl2grde}}</td>
+            </tr>
+            <tr>
+              <td>Stamina</td>
+              <td>{{sta1}}-{{sta2}}</td>
+              <td>{{sta1gr}}-{{sta2gr}}</td>
+              <td>{{sta1de}}-{{sta2de}}</td>
+              <td>{{sta1grde}}-{{sta2grde}}</td>
+            </tr>
+            <tr>
+              <td>Intellegence</td>
+              <td>{{int1}}-{{int2}}</td>
+              <td>{{int1gr}}-{{int2gr}}</td>
+              <td>{{int1de}}-{{int2de}}</td>
+              <td>{{int1grde}}-{{int2grde}}</td>
+            </tr>
+            <tr>
+              <td>Charisma</td>
+              <td>{{cha1}}-{{cha2}}</td>
+              <td>{{cha1gr}}-{{cha2gr}}</td>
+              <td>{{cha1de}}-{{cha2de}}</td>
+              <td>{{cha1grde}}-{{cha2grde}}</td>
+            </tr>
+            <tr>
+              <td>Luck</td>
+              <td>{{luc1}}-{{luc2}}</td>
+              <td>{{luc1gr}}-{{luc2gr}}</td>
+              <td>{{luc1de}}-{{luc2de}}</td>
+              <td>{{luc1grde}}-{{luc2grde}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="font-size: 1.5rem; text-align: left; margin-top: 100px; margin-bottom: 10px;" class="">
+         Please note: if genesis unsuccesfully, you'll get bastard with stats 1-20
+        </div>
+      </div>
+  </div>
+  
+</div>

@@ -1,0 +1,12 @@
+table {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-spacing: 0;
+    td{
+        text-align: right;
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+    }
+}
